@@ -14,8 +14,8 @@ RUN cd /opt/src/src/github.com/cockroachdb/cockroach &&\
 
 FROM debian:stretch-slim
 
-COPY --from=build-env /opt/src/src/github.com/cockroachdb/cockroach/cockroach /opt/cockroach
+COPY --from=build-env /opt/src/src/github.com/cockroachdb/cockroach /opt/cockroach
 RUN apt-get -y update && apt-get -y upgrade && \
-    chmod +x /opt/cockroach && ln -s /opt/cockroach /bin/cockroach &&\
+    chmod +x /opt/cockroach/cockroach && ln -s /opt/cockroach/cockroach /bin/cockroach &&\
     apt-get -y install libncurses5 && apt-get -y autoremove && apt-get -y clean &&\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
