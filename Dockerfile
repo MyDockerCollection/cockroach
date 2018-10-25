@@ -1,4 +1,4 @@
-FROM quay.io/spivegin/golangnodesj AS build-env
+FROM quay.io/spivegin/cockroach-builder AS build-env
 WORKDIR /opt/src/
 
 RUN cd /opt/src && mkdir -p /opt/src/github.com/cockroachdb &&\
