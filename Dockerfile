@@ -1,7 +1,10 @@
 FROM quay.io/spivegin/golangnodesj AS build-env
 WORKDIR /opt/src/
 
-RUN go get github.com/cockroachdb/cockroach && cd $GOPATH/src/github.com/cockroachdb/cockroach &&\
+RUN cd /opt/src && mkdir -p /opt/src/github.com/ &&\
+    cd /opt/src/github.com/ &&\
+    git clone https://github.com/cockroachdb/cockroach.git &&\
+    cd $GOPATH/src/github.com/cockroachdb/cockroach &&\
     make build && go build -o cockroach main.go 
 
 
