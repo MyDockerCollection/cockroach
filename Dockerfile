@@ -4,7 +4,7 @@ WORKDIR /opt/src/
 RUN cd /opt/src && mkdir -p /opt/src/github.com/ &&\
     cd /opt/src/github.com/ &&\
     git clone https://github.com/cockroachdb/cockroach.git &&\
-    cd $GOPATH/src/github.com/cockroachdb/cockroach &&\
+    cd $GOPATH/github.com/cockroachdb/cockroach &&\
     make build && go build -o cockroach main.go 
 
 
