@@ -18,7 +18,7 @@ RUN cd /opt/src/src/github.com/cockroachdb/cockroach &&\
 
 FROM debian:stretch-slim
 
-COPY --from=build-env /opt/src/src/github.com/cockroachdb/cockroach.zip /opt/
+COPY --from=build-env /opt/src/src/github.com/cockroachdb/cockroach/cockroach.zip /opt/
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y install zip unzip &&\
     cd /opt/ && upzip cockroach.zip && rm cockroach.oss cockroach.noui &&\
     chmod +x /opt/cockroach/cockroach.full && ln -s /opt/cockroach/cockroach.full /bin/cockroach &&\
