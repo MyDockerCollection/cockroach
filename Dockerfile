@@ -1,4 +1,4 @@
-FROM quay.io/spivegin/cockroach-builder AS build-env
+FROM quay.io/spivegin/cockroach-builder:master AS build-env
 WORKDIR /opt/src
 
 RUN cd /opt/src && mkdir -p /opt/src/src/github.com/cockroachdb &&\
@@ -6,9 +6,12 @@ RUN cd /opt/src && mkdir -p /opt/src/src/github.com/cockroachdb &&\
     git clone https://github.com/cockroachdb/cockroach.git
 
 RUN cd /opt/src/src/github.com/cockroachdb/cockroach &&\
-    make && make build && mv cockroach cockroach.full &&\
-    make build buildshort && mv cockroach cockroach.noui &&\
-    make build buildoss && mv cockroach cockroach.oss &&\
+    make && make build &&\
+    mv cockroach cockroach.full &&\
+    make build buildshort &&\
+    mv cockroach cockroach.noui &&\
+    make build buildoss &&\
+    mv cockroach cockroach.oss &&\
     zip cockroach.zip cockroach.full cockroach.noui cockroach.oss 
     
 
